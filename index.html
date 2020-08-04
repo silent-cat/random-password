@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>密码生成器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <div class="pwd_box" v-cloak>
+      <header>
+        <div class="dot">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h3>密码生成器</h3>
+      </header>
+      <div class="pwd_show_wrap" @click="isCopy">
+        <input
+          type="text"
+          placeholder="密码显示框"
+          readonly
+          :value="y_password"
+          id="pwd"
+        />
+        <div class="copy">
+          <p>点击复制</p>
+        </div>
+      </div>
+      <div class="pwd_len_wrap">
+        <p>长度：{{y_length}}</p>
+        <div class="len_box">
+          <span>4</span>
+          <input type="range" min="4" max="32" v-model="y_length" />
+          <span>32</span>
+        </div>
+      </div>
+      <div class="pwd_settings_wrap">
+        <p>设置</p>
+        <!-- label标签的for属性通过id绑定表单元素 -->
+        <div class="settings_box">
+          <div class="setting">
+            <label for="upperCase">包含大写 </label>
+            <input
+              type="checkbox"
+              id="upperCase"
+              @click="isUpper"
+              :checked="y_upper"
+            />
+          </div>
+          <div class="setting">
+            <label for="lowerCase">包含小写</label>
+            <input
+              type="checkbox"
+              id="lowerCase"
+              @click="isLower"
+              :checked="y_lower"
+            />
+          </div>
+          <div class="setting">
+            <label for="number">包含数字</label>
+            <input
+              type="checkbox"
+              id="number"
+              @click="isNumber"
+              :checked="y_number"
+            />
+          </div>
+          <div class="setting">
+            <label for="symbol">包含符号</label>
+            <input
+              type="checkbox"
+              id="symbol"
+              @click="isSymbol"
+              :checked="y_symbol"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="submit">
+        <input type="submit" value="生成密码" @click="submit" />
+      </div>
+    </div>
+  </body>
+  <script src="js/index.js"></script>
+</html>
